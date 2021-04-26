@@ -1,0 +1,121 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ],
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "reportUnusedDisableDirectives": true,
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.{js,jsx}",
+        "**/*.{spec,test}.{js,jsx}"
+      ],
+      "env": {
+        "jest": true
+      },
+      "globals": {
+        "React": true,
+        "shallow": true,
+        "mount": true,
+        "render": true
+      }
+    }
+  ],
+  "rules": {
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      "never"
+    ],
+    "@typescript-eslint/no-redeclare": "off",
+    "@typescript-eslint/object-curly-spacing": [
+      "error",
+      "never"
+    ],
+    "arrow-body-style": "error",
+    "block-spacing": [
+      "error",
+      "never"
+    ],
+    "func-style": [
+      "error",
+      "expression"
+    ],
+    "guard-for-in": "warn",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-console": "off",
+    "no-multiple-empty-lines": "warn",
+    "no-redeclare": "off",
+    "no-restricted-syntax": [
+      "warn",
+      "ForInStatement"
+    ],
+    "no-tabs": "off",
+    "no-trailing-spaces": "warn",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "error",
+    "object-curly-spacing": [
+      "error",
+      "never"
+    ],
+    "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "react/no-unused-state": "warn",
+    "react/require-default-props": [
+      "error",
+      {
+        "ignoreFunctionalComponents": true
+      }
+    ],
+    "react/state-in-constructor": "off",
+    "react/prop-types": "off",
+    "space-in-parens": "warn",
+    "space-infix-ops": "warn",
+    "template-curly-spacing": "warn"
+  }
+}
