@@ -3,11 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import {makeStyles} from '@material-ui/core/styles';
 
 import CardForm from './card-form';
-
-interface IPropsDialog {
-  open: boolean;
-  onClose(): void;
-}
+import {IPropsDialog} from '../../interfaces';
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -15,17 +11,18 @@ const useStyles = makeStyles(() => ({
     borderRadius: 0,
     backgroundColor: 'transparent',
     boxShadow: 'none',
-    minWidth: 375
+    minWidth: 375,
+    maxWidth: 800
   }
 }));
 
 const CardModal: React.FunctionComponent<IPropsDialog> = (props) => {
   const cls = useStyles();
-  const {open, onClose} = props;
+  const {open, data, onClose} = props;
 
   return (
     <Dialog open={open} scroll="body" classes={{paper: cls.paper}}>
-      <CardForm title="Карточка" onClose={onClose} />
+      <CardForm data={data} onClose={onClose} />
     </Dialog>
   );
 };

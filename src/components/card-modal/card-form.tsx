@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 
+import {IProps} from '../../interfaces';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275
@@ -15,13 +17,9 @@ const useStyles = makeStyles({
   }
 });
 
-interface IProps {
-  title: string;
-  onClose(): void;
-}
-
 const CardForm: React.FunctionComponent<IProps> = (props) => {
-  const {title, onClose} = props;
+  const {data, onClose} = props;
+  const {title} = data;
   const cls = useStyles();
 
   return (

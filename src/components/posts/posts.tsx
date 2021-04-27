@@ -4,12 +4,21 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 import CardModal from '../card-modal/card-modal';
+import {ICardData} from '../../interfaces';
 
 const apiUrl = 'https://gorest.co.in/public-api/posts';
 
 const Posts = () => {
   const [apiData, setApiData] = useState([]);
   const [openCard, setOpenCard] = useState(false);
+  const [cardData, setCardData] = useState<ICardData>({
+    id: undefined,
+    userId: undefined,
+    title: '',
+    createdAt: undefined,
+    updatedAt: undefined,
+    body: ''
+  });
 
   useEffect(() => {
     fetch(apiUrl)
@@ -20,9 +29,26 @@ const Posts = () => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log('cardData: ', cardData);
+    if (cardData.id) {
+      setOpenCard(true);
+    }
+  }, [cardData]);
+
   const handleRowClick = (params: any) => {
+    const {data} = params;
+    const {id, user_id: userId, title, created_at: createdAt, updated_at: updatedAt, body} = data;
     console.log('params: ', params);
-    setOpenCard(true);
+    const obj = {
+      id,
+      userId,
+      title,
+      createdAt,
+      updatedAt,
+      body
+    };
+    setCardData(obj);
   };
 
   return (
@@ -34,7 +60,7 @@ const Posts = () => {
         <AgGridColumn field="created_at" />
         <AgGridColumn field="updated_at" />
       </AgGridReact>
-      <CardModal open={openCard} onClose={() => setOpenCard(false)} />
+      <CardModal open={openCard} data={cardData} onClose={() => setOpenCard(false)} />
     </div>
   );
 };
