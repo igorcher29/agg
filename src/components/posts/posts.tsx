@@ -31,7 +31,7 @@ const Posts = () => {
   };
 
   return (
-    <div className="ag-theme-alpine" style={{height: 400, width: 900}}>
+    <div className="ag-theme-alpine" style={{height: '90vh', width: 'auto'}}>
       <AgGridReact rowData={apiData} onGridReady={onGridReady}>
         <AgGridColumn field="id" />
         <AgGridColumn field="user_id" />
