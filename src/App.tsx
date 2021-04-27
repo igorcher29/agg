@@ -1,11 +1,11 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
 import AppMenu from './components/app-menu/app-menu';
-import './App.scss';
 
 export const App = () => (
-  <div className="App">
+  <Container>
     <AppMenu />
-  </div>
+  </Container>
 );
 
 export default App;
