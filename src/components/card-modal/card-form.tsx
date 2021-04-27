@@ -1,4 +1,5 @@
 import * as React from 'react';
+import moment from 'moment';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,8 +27,8 @@ const CardForm: React.FunctionComponent<IProps> = (props) => {
         <TextBlock label="id" value={id} />
         <TextBlock label="user id" value={userId} />
         <TextBlock label="title" value={title} />
-        <TextBlock label="created at" value={createdAt?.toString()} />
-        <TextBlock label="updated at" value={updatedAt?.toString()} />
+        <TextBlock label="created at" value={moment(createdAt).format('DD-MM-YYYY hh: mm')} />
+        <TextBlock label="updated at" value={moment(updatedAt).format('DD-MM-YYYY hh: mm')} />
         <TextBlock label="body" value={body} />
       </CardContent>
       <CardActions>
