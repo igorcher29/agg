@@ -17,7 +17,6 @@ const useStyles = makeStyles({
 
 const CardForm: React.FunctionComponent<IProps> = (props) => {
   const {data, onClose} = props;
-  console.log('data: ', data);
   const {id, userId, title, createdAt, updatedAt, body} = data;
   const cls = useStyles();
 
