@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import AppRoutes from './components/app-routes/app-routes';
 
 export const App = () => (
-  <Container>
+  <Container maxWidth="xl">
     <AppRoutes />
   </Container>
 );
