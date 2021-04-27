@@ -17,10 +17,11 @@ const useStyles = makeStyles({
 
 interface IProps {
   title: string;
+  onClose(): void;
 }
 
 const CardForm: React.FunctionComponent<IProps> = (props) => {
-  const {title} = props;
+  const {title, onClose} = props;
   const cls = useStyles();
 
   return (
@@ -31,7 +32,7 @@ const CardForm: React.FunctionComponent<IProps> = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => {}}>
+        <Button size="small" onClick={onClose}>
           Закрыть
         </Button>
       </CardActions>

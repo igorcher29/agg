@@ -9,7 +9,6 @@ const apiUrl = 'https://gorest.co.in/public-api/posts';
 
 const Posts = () => {
   const [apiData, setApiData] = useState([]);
-  const [gridApi, setGridApi] = useState(null);
   const [openCard, setOpenCard] = useState(false);
 
   useEffect(() => {
@@ -21,18 +20,6 @@ const Posts = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log('apiData: ', apiData);
-  }, [apiData]);
-
-  useEffect(() => {
-    console.log('gridApi: ', gridApi);
-  }, [gridApi]);
-
-  const onGridReady = (params: any) => {
-    setGridApi(params.api);
-  };
-
   const handleRowClick = (params: any) => {
     console.log('params: ', params);
     setOpenCard(true);
@@ -40,14 +27,14 @@ const Posts = () => {
 
   return (
     <div className="ag-theme-alpine" style={{height: '90vh', width: 'auto'}}>
-      <AgGridReact rowData={apiData} onGridReady={onGridReady} onRowClicked={handleRowClick}>
+      <AgGridReact rowData={apiData} onRowClicked={handleRowClick}>
         <AgGridColumn field="id" />
         <AgGridColumn field="user_id" />
         <AgGridColumn field="title" />
         <AgGridColumn field="created_at" />
         <AgGridColumn field="updated_at" />
       </AgGridReact>
-      <CardModal open={openCard} />
+      <CardModal open={openCard} onClose={() => setOpenCard(false)} />
     </div>
   );
 };

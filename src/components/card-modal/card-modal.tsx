@@ -6,6 +6,7 @@ import CardForm from './card-form';
 
 interface IPropsDialog {
   open: boolean;
+  onClose(): void;
 }
 
 const useStyles = makeStyles(() => ({
@@ -20,11 +21,11 @@ const useStyles = makeStyles(() => ({
 
 const CardModal: React.FunctionComponent<IPropsDialog> = (props) => {
   const cls = useStyles();
-  const {open} = props;
+  const {open, onClose} = props;
 
   return (
     <Dialog open={open} scroll="body" classes={{paper: cls.paper}}>
-      <CardForm title="Карточка" />
+      <CardForm title="Карточка" onClose={onClose} />
     </Dialog>
   );
 };
