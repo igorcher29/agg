@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react';
+import {AgGridColumn, AgGridReact} from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const apiUrl = 'https://gorest.co.in/public-api/posts';
 
 const Posts = () => {
   const [apiData, setApiData] = useState([]);
+  const [gridApi, setGridApi] = useState(null);
 
   useEffect(() => {
     fetch(apiUrl)
@@ -18,7 +22,25 @@ const Posts = () => {
     console.log('apiData: ', apiData);
   }, [apiData]);
 
-  return <div>Posts</div>;
+  useEffect(() => {
+    console.log('gridApi: ', gridApi);
+  }, [gridApi]);
+
+  const onGridReady = (params: any) => {
+    setGridApi(params.api);
+  };
+
+  return (
+    <div className="ag-theme-alpine" style={{height: 400, width: 900}}>
+      <AgGridReact rowData={apiData} onGridReady={onGridReady}>
+        <AgGridColumn field="id" />
+        <AgGridColumn field="user_id" />
+        <AgGridColumn field="title" />
+        <AgGridColumn field="created_at" />
+        <AgGridColumn field="updated_at" />
+      </AgGridReact>
+    </div>
+  );
 };
 
 export default Posts;
