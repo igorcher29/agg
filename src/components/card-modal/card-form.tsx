@@ -3,31 +3,32 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 
 import {IProps} from '../../interfaces';
+import TextBlock from './text-block';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275
-  },
-  title: {
-    fontSize: 14
+    padding: '10px 20px'
   }
 });
 
 const CardForm: React.FunctionComponent<IProps> = (props) => {
   const {data, onClose} = props;
-  const {title} = data;
+  console.log('data: ', data);
+  const {id, userId, title, createdAt, updatedAt, body} = data;
   const cls = useStyles();
 
   return (
     <Card className={cls.root}>
       <CardContent>
-        <Typography className={cls.title} color="textSecondary" gutterBottom>
-          {title}
-        </Typography>
+        <TextBlock label="id" value={id} />
+        <TextBlock label="user id" value={userId} />
+        <TextBlock label="title" value={title} />
+        <TextBlock label="created at" value={createdAt?.toString()} />
+        <TextBlock label="updated at" value={updatedAt?.toString()} />
+        <TextBlock label="body" value={body} />
       </CardContent>
       <CardActions>
         <Button size="small" onClick={onClose}>

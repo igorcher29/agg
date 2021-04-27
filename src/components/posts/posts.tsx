@@ -30,7 +30,6 @@ const Posts = () => {
   }, []);
 
   useEffect(() => {
-    console.log('cardData: ', cardData);
     if (cardData.id) {
       setOpenCard(true);
     }
@@ -39,7 +38,6 @@ const Posts = () => {
   const handleRowClick = (params: any) => {
     const {data} = params;
     const {id, user_id: userId, title, created_at: createdAt, updated_at: updatedAt, body} = data;
-    console.log('params: ', params);
     const obj = {
       id,
       userId,
