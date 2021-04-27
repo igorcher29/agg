@@ -1,17 +1,16 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-
-import Main from '../main/main';
-import Posts from '../posts/posts';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 
 const AppMenu = () => (
-  <Router>
-    <Switch>
-      <Route path="/" exact component={Main} />
-      <Route path="/posts/" component={Posts} />
-      <Redirect to="/" />
-    </Switch>
-  </Router>
+  <div>
+    <Typography>
+      <Link href="/">Главная</Link>
+    </Typography>
+    <Typography>
+      <Link href="/posts/">Посты</Link>
+    </Typography>
+  </div>
 );
 
 export default AppMenu;

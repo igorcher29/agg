@@ -1,10 +1,10 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import AppMenu from './components/app-menu/app-menu';
+import AppRoutes from './components/app-routes/app-routes';
 
 export const App = () => (
   <Container>
-    <AppMenu />
+    <AppRoutes />
   </Container>
 );
 
